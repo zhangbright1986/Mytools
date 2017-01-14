@@ -38,13 +38,13 @@ if args.seq:
 
     for si in args.seq:
         if si in chemical_symbols:
-            #print si, val
+            # print si, val
             potdict.update({si: val})
             val += 1
         else:
             print si + " is not a chemical symbol and will be skipped"
 
-    #print potdict
+    # print potdict
     for pi in p:
         for key in potdict:
             if pi.symbol == key:
