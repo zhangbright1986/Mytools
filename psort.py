@@ -27,23 +27,24 @@ pcopy = sort(pcopy)
 plist = pcopy.get_chemical_symbols()
 # print plist
 plist = list(set(plist))
-rlist = list(set(args.seq))
 
 if args.seq:
     potdict = {}
-    val = 0
+    val = 1
 
+    rlist = list(set(args.seq))
     if plist not in rlist:
-        print "Warning: Sorting list doesn't include all element in input file"
+        print "Warning: Sorting list doesn't include all elements in input file"
 
     for si in args.seq:
         if si in chemical_symbols:
-            print si, val
+            #print si, val
             potdict.update({si: val})
             val += 1
         else:
             print si + " is not a chemical symbol and will be skipped"
 
+    #print potdict
     for pi in p:
         for key in potdict:
             if pi.symbol == key:
