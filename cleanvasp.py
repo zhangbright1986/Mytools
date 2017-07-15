@@ -18,6 +18,6 @@ if os.path.isfile('fin.traj'):
 else:
     ptmp=read('POSCAR')
     pini=read(str(tar)+'/init.traj')
-    mag=pini.get_magnetic_moments()
+    mag=pini.get_initial_magnetic_moments()
     ptmp.set_initial_magnetic_moments(mag)
     write('init.traj', ptmp)
