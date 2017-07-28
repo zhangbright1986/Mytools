@@ -9,7 +9,7 @@ calc = Vasp(prec='normal',
             encut=400.0,
             xc='PBE',
             lreal='Auto',
-            kpts=[3,3,1],
+            kpts=[4,1,1],
             nsw = 200,
             ibrion = 2,
             amix_mag = 0.800000,
@@ -22,7 +22,7 @@ calc = Vasp(prec='normal',
             algo ='fast',
             ismear = 0,
             nelm = 250,
-            ncore = 16,
+            ncore = 12,
             lasph= True,
             ldautype = 2,
             lmaxmix = 4,
@@ -40,11 +40,11 @@ calc = Vasp(prec='normal',
 calc.calculation_required = lambda x, y: True
 p.set_calculator(calc)
 pe=p.get_potential_energy()
-
+forces=p.get_forces()
 mag=p.get_magnetic_moments()
 p.set_initial_magnetic_moments(mag)
-
+min_force=min([abs(x)for x in forces])
 write('fin.traj',p)
 
 print "Energy = "+str(pe)
-
+print "min_forces = "+str(min_force)
