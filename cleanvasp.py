@@ -12,8 +12,9 @@ except IndexError:
     
 os.system('vfin.pl '+str(tar))
 os.system('mv init.traj  ' + str(tar))
-os.system('mv err* out* '+ str(tar))
-if os.path.isfile('fin.traj'):
+os.system('mv err.* out.* '+ str(tar))
+cwd=os.getcwd()
+if os.path.isfile(cwd+'/fin.traj'):
     os.system('mv fin.traj init.traj')
 else:
     ptmp=read('POSCAR')
