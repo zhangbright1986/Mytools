@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 import os
 from ase.io import read, write
+from ase.calculators.vasp import Vasp
 import sys
 
-#files= os.listdir('.')
+calc = Vasp(restart=True)
+p= calc.get_atoms()
+write('fin.traj',p)
+
 try:
     tar=sys.argv[1]
 except IndexError:
@@ -11,7 +15,7 @@ except IndexError:
     exit()
     
 os.system('vfin.pl '+str(tar))
-os.system('cp init.traj  ' + str(tar))
+os.system('cp init.traj fin.traj ' + str(tar))
 
 if os.path.isfile('fin.traj'):
     os.system('cp  ' + str(tar) +'/fe.dat  .')
