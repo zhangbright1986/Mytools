@@ -8,7 +8,7 @@ from shutil import copyfile
 
 cwd=os.getcwd()
 basefile='init.traj'
-submit=True
+submit=False
 
 try:
     p0=read(basefile)
