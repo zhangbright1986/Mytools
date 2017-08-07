@@ -21,6 +21,7 @@ os.system('cp init.traj fin.traj '+tar)
 os.system('rm init.traj')
 
 if not os.path.isfile('./fin.traj'):
-    os.system('cp relax.traj init.traj')
+    p=read('relax.traj@-1')
+    write('init.traj',p)
     os.system('mv -f opt.log relax.traj ' +tar)
    
