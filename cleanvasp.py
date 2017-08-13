@@ -16,6 +16,7 @@ except IndexError:
 if os.path.isfile('fin.traj'):
     calc = Vasp(restart=True)
     p= calc.get_atoms()
+    p.set_initial_magnetic_moments(p.get_magnetic_moments())
     write('fin.traj',p)
     os.system('vfin.pl '+str(tar))
 
